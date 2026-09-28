@@ -1,0 +1,471 @@
+/* ===================================================================
+   VIỆT PHỤC REMIX - GEN Z CULTURAL WARDROBE & MIXLAB
+   DESIGN SYSTEM, TOKENS, TYPOGRAPHY & CORE LAYOUT
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;600;700;800;900&family=Cinzel:wght@600;700;800&display=swap');
+
+:root {
+  /* Color Palette: Dark Neo-Imperial & Gen Z Cyber-Folk */
+  --bg-primary: #090c13;
+  --bg-secondary: #0f1523;
+  --bg-card: rgba(18, 24, 38, 0.75);
+  --bg-glass: rgba(26, 34, 52, 0.55);
+  --bg-glass-heavy: rgba(12, 17, 28, 0.85);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(255, 209, 102, 0.35);
+  --border-neon: rgba(247, 37, 133, 0.45);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* Accents */
+  --gold-primary: #ffd166;
+  --gold-glow: #e5b842;
+  --ruby-red: #e63946;
+  --emerald-green: #06d6a0;
+  --cyber-pink: #f72585;
+  --cyber-cyan: #00f5d4;
+  --indigo-royal: #4361ee;
+  --purple-regal: #7209b7;
+
+  /* Shadows & Glows */
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-glow-gold: 0 0 25px rgba(255, 209, 102, 0.22);
+  --shadow-glow-neon: 0 0 30px rgba(247, 37, 133, 0.25);
+  --shadow-elevation: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Royal Theme Override */
+body.light-royal-theme {
+  --bg-primary: #fdfaf6;
+  --bg-secondary: #f4ece1;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.65);
+  --bg-glass-heavy: rgba(245, 237, 227, 0.95);
+  --border-subtle: rgba(181, 131, 80, 0.15);
+  --border-glow: rgba(181, 131, 80, 0.4);
+  --text-main: #1e1b18;
+  --text-muted: #57534e;
+  --text-dim: #78716c;
+  --gold-primary: #b45309;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(114, 9, 183, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(247, 37, 133, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 209, 102, 0.04) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-glass);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* Container */
+.app-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px 60px 24px;
+}
+
+/* ===================================================================
+   HEADER & NAVBAR
+   =================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg-glass-heavy);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 14px 0;
+  margin-bottom: 24px;
+  transition: all var(--transition-normal);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-primary), var(--cyber-pink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: var(--shadow-glow-gold);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.brand-text h1 {
+  font-family: 'Outfit', 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #ffffff, var(--gold-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-badge {
+  font-size: 10px;
+  background: var(--cyber-pink);
+  color: white;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  -webkit-text-fill-color: white;
+}
+
+.brand-text p {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Nav Tabs */
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card);
+  padding: 5px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.nav-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.nav-tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-tab-btn.active {
+  background: linear-gradient(135deg, var(--gold-primary), #f59e0b);
+  color: #12141a;
+  box-shadow: 0 4px 15px rgba(255, 209, 102, 0.35);
+}
+
+/* Header Controls */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-header-action {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.btn-header-action:hover {
+  border-color: var(--gold-primary);
+  background: var(--bg-glass);
+}
+
+/* ===================================================================
+   HERO BANNER
+   =================================================================== */
+.hero-banner {
+  background: linear-gradient(135deg, rgba(29, 53, 87, 0.6) 0%, rgba(114, 9, 183, 0.4) 50%, rgba(247, 37, 133, 0.25) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-elevation);
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 820px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffffff, #fefae0, var(--gold-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.highlight-chip {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  color: #f1faee;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===================================================================
+   TAB PANES
+   =================================================================== */
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================================================================
+   GLOBAL BUTTONS & COMPONENTS
+   =================================================================== */
+.btn-primary-glow {
+  background: linear-gradient(135deg, var(--gold-primary), #f59e0b);
+  color: #11141c;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(255, 209, 102, 0.4);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 209, 102, 0.6);
+}
+
+.btn-primary-glow.small {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.btn-secondary-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  color: var(--text-main);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary-glass:hover {
+  border-color: var(--gold-primary);
+  background: var(--bg-glass);
+}
+
+/* ===================================================================
+   TOAST NOTIFICATIONS
+   =================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-elevation);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.toast-success {
+  background: rgba(6, 214, 160, 0.9);
+  color: #0b2b22;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.toast-warning {
+  background: rgba(255, 209, 102, 0.95);
+  color: #3b2c04;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.toast-info {
+  background: rgba(18, 24, 38, 0.95);
+  color: #f8fafc;
+  border: 1px solid var(--border-glow);
+}
+
+.toast-fade-out {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+  .nav-tabs {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .hero-title {
+    font-size: 28px;
+  }
+}

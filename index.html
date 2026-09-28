@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Việt Phục Remix - Phối Trang Phục Truyền Thống Theo Phong Cách Gen Z</title>
+  <meta name="description" content="Ứng dụng thời trang và văn hóa giúp thế hệ trẻ khám phá, phối đồ và thử nghiệm Việt Phục (Áo Ngũ Thân, Tứ Thân, Nhật Bình, Áo Dài) hòa quyện phong cách đương đại Gen Z.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/studio.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ===================================================================
+       HEADER & NAVIGATION BAR
+       =================================================================== -->
+  <header class="site-header">
+    <div class="app-container header-inner">
+      <div class="brand-container" onclick="window.switchTab('studioTab')">
+        <div class="brand-logo-mark">🪷</div>
+        <div class="brand-text">
+          <h1>VIỆT PHỤC REMIX <span class="brand-badge">GEN Z</span></h1>
+          <p>Tôn Vinh Di Sản · Sáng Tạo Đương Đại</p>
+        </div>
+      </div>
+
+      <nav class="nav-tabs" role="tablist">
+        <button class="nav-tab-btn active" data-tab="studioTab" id="tabBtnStudio">
+          <span>🎨</span> Xưởng Phối Đồ
+        </button>
+        <button class="nav-tab-btn" data-tab="recommenderTab" id="tabBtnRecommender">
+          <span>🤖</span> AI Stylist Gợi Ý
+        </button>
+        <button class="nav-tab-btn" data-tab="compareTab" id="tabBtnCompare">
+          <span>⚖️</span> So Sánh Outfit
+        </button>
+        <button class="nav-tab-btn" data-tab="lookbookTab" id="tabBtnLookbook">
+          <span>📸</span> Lookbook & Bộ Sưu Tập
+        </button>
+        <button class="nav-tab-btn" data-tab="wikiTab" id="tabBtnWiki">
+          <span>📜</span> Bách Khoa & Quiz
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button id="soundToggleBtn" class="btn-header-action" title="Bật/Tắt âm thanh Đàn Tranh">
+          🎵 Âm Thanh: Bật
+        </button>
+        <button id="themeToggleBtn" class="btn-header-action" title="Đổi giao diện Hoàng Kim / Đêm">
+          ☀️ Hoàng Kim
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       MAIN CONTENT CONTAINER
+       =================================================================== -->
+  <main class="app-container">
+
+    <!-- HERO INTRO BANNER -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <div class="hero-tag">🌟 ĐỀ THI AUDITION: VIỆT PHỤC REMIX</div>
+        <h2 class="hero-title">Khám Phá & Phối Trang Phục Cổ Truyền Theo Nhịp Đập Gen Z</h2>
+        <p class="hero-desc">
+          Áo dài, áo tứ thân, áo ngũ thân hay áo tấc không chỉ nằm lại trong trang sách hay bảo tàng. 
+          Hãy bước vào Xưởng Phối Đồ để tự do remix cổ phục cùng giày chunky, áo blazer, kính Matrix và phụ kiện đường phố, 
+          đồng thời lắng nghe những giá trị văn hóa ngàn năm được bảo chứng nguyên bản.
+        </p>
+        <div class="hero-highlights">
+          <div class="highlight-chip"><span>🛡️</span> Radar Chuẩn Mực Văn Hóa</div>
+          <div class="highlight-chip"><span>🎨</span> Bảng Màu Ngũ Hành Tương Sinh</div>
+          <div class="highlight-chip"><span>📸</span> Xuất Tạp Chí Lookbook HD</div>
+          <div class="highlight-chip"><span>🌦️</span> Stylist Thời Tiết & Sự Kiện</div>
+          <div class="highlight-chip"><span>👤</span> Ghép Ảnh Chân Dung Thử Đồ</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TAB 1: XƯỞNG PHỐI ĐỒ (MIX & MATCH STUDIO)
+         ================================================================= -->
+    <section id="studioTab" class="tab-pane active">
+      <div class="studio-grid">
+
+        <!-- CỘT TRÁI: ĐIỀU KHIỂN & CHỌN TRANG PHỤC -->
+        <aside class="studio-panel studio-sidebar-left">
+          <div class="panel-section-title">
+            <span>1. Chọn Lớp Trang Phục</span>
+            <span class="section-count">TOP & BOTTOM</span>
+          </div>
+
+          <!-- VÓC DÁNG & GIỚI TÍNH AVATAR -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Vóc Dáng & Giới Tính Avatar</span>
+              <span style="font-size:10px; color:var(--gold-primary);">3 Phong Cách</span>
+            </div>
+            <div id="genderSelectorRow" class="gender-selector-row">
+              <button class="gender-btn active" data-gender="female">👩 Nữ Sinh Thanh Lịch</button>
+              <button class="gender-btn" data-gender="male">👨 Nam Sinh Nho Nhã</button>
+              <button class="gender-btn" data-gender="unisex">⚡ Unisex Phóng Khoáng</button>
+            </div>
+          </div>
+
+          <!-- ÁO CHÍNH (TOPS) -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Áo Chính (Việt Phục Cổ)</span>
+              <span style="font-size:10px; color:var(--gold-primary);">Triều Nguyễn · Lê · Dân Gian</span>
+            </div>
+            <div id="garmentSelectorGrid" class="selector-grid">
+              <!-- Render động từ JS -->
+            </div>
+          </div>
+
+          <!-- PHẦN DƯỚI (BOTTOMS) -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Phần Dưới (Quần / Chân Váy)</span>
+              <span style="font-size:10px; color:var(--cyber-pink);">Cổ Điển x Streetwear</span>
+            </div>
+            <div id="bottomSelectorGrid" class="selector-grid">
+              <!-- Render động từ JS -->
+            </div>
+
+            <!-- Màu quần / váy -->
+            <div style="margin-top: 10px;">
+              <div class="control-label" style="font-size: 11px;">Màu Quần / Váy:</div>
+              <div style="display:flex; gap:8px;">
+                <button class="bottom-color-btn color-swatch-btn" data-color="#f8f9fa" style="background:#f8f9fa;" title="Trắng ngà"></button>
+                <button class="bottom-color-btn color-swatch-btn" data-color="#111111" style="background:#111111;" title="Đen tuyền"></button>
+                <button class="bottom-color-btn color-swatch-btn" data-color="#4a6fa5" style="background:#4a6fa5;" title="Denim wash"></button>
+                <button class="bottom-color-btn color-swatch-btn" data-color="#e9d8a6" style="background:#e9d8a6;" title="Đũi vàng be"></button>
+                <button class="bottom-color-btn color-swatch-btn" data-color="#212529" style="background:#212529;" title="Kaki đen"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- BỘ PHỐI MÀU HOÀN CHỈNH (COLOR SUITES) & SẮC MÀU NGŨ HÀNH -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Bảng Màu Phối Sẵn Theo Chủ Đề (Color Suites)</span>
+              <span style="font-size:10px; color:var(--gold-primary);">1-Click Áp Dụng</span>
+            </div>
+            <div id="colorSuitesContainer" class="color-suites-container">
+              <!-- Render động từ studio.js -->
+            </div>
+
+            <div class="control-label" style="margin-top:14px;">
+              <span>Sắc Màu Áo Riêng Lẻ (Ngũ Hành & Pastel Trend)</span>
+            </div>
+            <div id="colorPaletteContainer" class="color-palette-bar">
+              <!-- Render động từ JS -->
+            </div>
+            <div class="custom-color-picker-row">
+              <input type="color" id="customColorInput" value="#1d3557" title="Tùy chỉnh mã màu riêng">
+              <span style="font-size: 11px; color: var(--text-muted);">Tùy chỉnh mã màu Hex yêu thích</span>
+            </div>
+          </div>
+
+          <!-- HOA VĂN VẢI DỆT -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Chất Liệu & Họa Tiết Vải</span>
+            </div>
+            <div id="patternSelectorGrid" class="chip-group">
+              <!-- Render động từ JS -->
+            </div>
+          </div>
+
+          <!-- PHỤ KIỆN CỔ TRUYỀN -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Phụ Kiện Cổ Truyền</span>
+            </div>
+            <div id="tradAccGrid" class="chip-group">
+              <!-- Render động từ JS -->
+            </div>
+          </div>
+
+          <!-- PHỤ KIỆN GEN Z REMIX -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Phụ Kiện Gen Z Remix</span>
+            </div>
+            <div id="modernAccGrid" class="chip-group">
+              <!-- Render động từ JS -->
+            </div>
+          </div>
+
+          <!-- BỐI CẢNH NỀN & SỰ KIỆN -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Bối Cảnh & Sự Kiện</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <select id="eventSelect" class="form-select-styled">
+                <option value="ky_yeu">🎓 Chụp Ảnh Kỷ Yếu Tốt Nghiệp</option>
+                <option value="prom" selected>✨ Dạ Hội Prom / Tiệc Trưởng Thành</option>
+                <option value="streetwear">🛹 Dạo Phố Cuối Tuần / Phố Đi Bộ</option>
+                <option value="tet">🧧 Du Xuân Chúc Tết & Lễ Hội Hoa</option>
+                <option value="le_chua">🪷 Đi Chùa Cầu An & Tịnh Tâm</option>
+                <option value="festival">🚩 Festival Diễu Hành Việt Phục</option>
+              </select>
+
+              <select id="bgSelect" class="form-select-styled">
+                <option value="hue_palace" selected>🏰 Ngọ Môn - Đại Nội Cố Đô Huế</option>
+                <option value="ho_guom">🐢 Tháp Rùa - Hồ Gươm Mùa Thu</option>
+                <option value="hoi_an">🏮 Phố Cổ Hội An Lung Linh Đèn Lồng</option>
+                <option value="cyber_saigon">🌆 Cyberpunk Sài Gòn 2077 Neon City</option>
+                <option value="studio_minimal">📸 Studio Minimalist Chuyên Nghiệp</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- QUY CÁCH CÀI VẠT ÁO (GUARDRAIL TOGGLE) -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Quy Cách Cài Vạt Áo</span>
+            </div>
+            <div class="toggle-switch-row">
+              <span style="font-size:12px; color:var(--text-muted);">
+                Thử cài vạt trái lên trên (Tả nhậm)
+              </span>
+              <label class="switch">
+                <input type="checkbox" id="lapelToggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <p style="font-size: 10px; color: var(--text-dim); margin-top: 6px;">
+              * Lưu ý: Thử bật để xem Radar Cảnh Báo Văn Hóa phản ứng khi sai quy cách!
+            </p>
+          </div>
+        </aside>
+
+        <!-- CỘT GIỮA: MOCKUP MANNEQUIN CANVAS TRỰC QUAN -->
+        <main class="studio-canvas-container">
+          <div class="canvas-frame">
+            <canvas id="mannequinCanvas" width="600" height="850"></canvas>
+
+            <!-- Floating Controls -->
+            <div class="canvas-floating-controls">
+              <button id="btnZoomIn" class="canvas-ctrl-btn" title="Phóng to">+</button>
+              <button id="btnResetZoom" class="canvas-ctrl-btn" title="Kích thước chuẩn">1:1</button>
+              <button id="btnZoomOut" class="canvas-ctrl-btn" title="Thu nhỏ">-</button>
+            </div>
+          </div>
+
+          <!-- Nút hành động chính dưới Canvas -->
+          <div class="studio-action-bar">
+            <button id="btnSaveLookbook" class="btn-primary-glow">
+              Lưu Vào Lookbook 💾
+            </button>
+            <button id="btnExportPNG" class="btn-secondary-glass">
+              Xuất Tạp Chí HD 📥
+            </button>
+            <button id="randomMixBtn" class="btn-secondary-glass" title="Phối đồ ngẫu hứng">
+              🎲 Ngẫu Hứng
+            </button>
+          </div>
+
+          <!-- Tải ảnh chân dung thử đồ -->
+          <div class="avatar-upload-zone">
+            <label for="avatarUploadInput" class="avatar-upload-label">
+              <span>👤 <strong>Ghép Ảnh Chân Dung:</strong> Tải ảnh khuôn mặt bạn để thử trang phục</span>
+            </label>
+            <input type="file" id="avatarUploadInput" accept="image/*" style="display:none;">
+            <button id="removeAvatarBtn" class="btn-secondary-glass small" style="display:none;">
+              Gỡ Ảnh ✖
+            </button>
+          </div>
+        </main>
+
+        <!-- CỘT PHẢI: RADAR VĂN HÓA & LỊCH SỬ VIỆT PHỤC -->
+        <aside class="studio-panel studio-sidebar-right">
+          <div class="panel-section-title">
+            <span>2. Thước Đo Chuẩn Mực Văn Hóa</span>
+            <span class="section-count">AI RADAR</span>
+          </div>
+
+          <!-- Thanh đo 3 chỉ số -->
+          <div class="radar-scores-box">
+            <div class="score-metric">
+              <div class="score-header">
+                <span>Điểm Tôn Vinh Di Sản:</span>
+                <span id="culturalScoreVal" style="color:var(--emerald-green);">95%</span>
+              </div>
+              <div class="score-progress-track">
+                <div id="culturalScoreBar" class="score-progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="score-metric">
+              <div class="score-header">
+                <span>Độ Hài Hòa Màu Sắc (Ngũ Hành):</span>
+                <span id="harmonyScoreVal" style="color:var(--gold-primary);">88%</span>
+              </div>
+              <div class="score-progress-track">
+                <div id="harmonyScoreBar" class="score-progress-bar" style="background:var(--gold-primary);"></div>
+              </div>
+            </div>
+
+            <div class="score-metric">
+              <div class="score-header">
+                <span>Độ Thoải Mái Vận Động:</span>
+                <span id="comfortScoreVal" style="color:var(--emerald-green);">85%</span>
+              </div>
+              <div class="score-progress-track">
+                <div id="comfortScoreBar" class="score-progress-bar" style="background:var(--emerald-green);"></div>
+              </div>
+            </div>
+
+            <div class="score-metric">
+              <div class="score-header">
+                <span>Độ Phá Cách Gen Z Trend:</span>
+                <span id="genzScoreVal" style="color:var(--cyber-pink);">85%</span>
+              </div>
+              <div class="score-progress-track">
+                <div id="genzScoreBar" class="score-progress-bar" style="background:var(--cyber-pink);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lưu Ý Văn Hóa Theo Sự Kiện Đã Chọn -->
+          <div class="event-cultural-tip-box" id="eventCulturalTipBox">
+            <h5 id="eventCulturalTipTitle">💡 LƯU Ý TRANG PHỤC SỰ KIỆN</h5>
+            <p id="eventCulturalTipText">Đang tải gợi ý trang phục theo dịp...</p>
+          </div>
+
+          <!-- Khung Cảnh Báo Văn Hóa (Guardrail Messages) -->
+          <div id="culturalAlertContainer">
+            <!-- Render động từ studio.js -->
+          </div>
+
+          <!-- Thông tin Nguồn gốc & Ý nghĩa Văn hóa -->
+          <div class="info-lore-card">
+            <div class="control-label" style="margin-bottom:6px;">NGUỒN GỐC & Ý NGHĨA</div>
+            <h3 id="infoGarmentName">Áo Ngũ Thân Tay Chẽn</h3>
+            <div class="info-meta-row">
+              <span id="infoGarmentEra">Triều Nguyễn</span> · 
+              <span id="infoGarmentRegion">Cố đô Huế & Toàn quốc</span>
+            </div>
+            
+            <p id="infoGarmentMeaning">
+              Áo có 5 thân tượng trưng tứ thân phụ mẫu và người mặc, 5 nút cài tượng trưng Ngũ Thường (Nhân, Lễ, Nghĩa, Trí, Tín).
+            </p>
+
+            <div class="control-label" style="margin-bottom:4px; font-size:11px;">ĐẶC ĐIỂM CẮT MAY:</div>
+            <p id="infoGarmentCut" style="font-size:11px;">
+              Vạt áo cong chữ A, tà dài quá gối, vạt phải đè vạt trái ('Hữu nhậm') đoan trang kín đáo.
+            </p>
+
+            <div id="infoGarmentTags" style="margin-top:10px;">
+              <!-- Tags -->
+            </div>
+          </div>
+
+          <!-- Gợi ý Bộ Phối Mẫu Gen Z (Presets) -->
+          <div class="panel-section-title" style="margin-top:20px;">
+            <span>3. Gợi Ý Phối Đồ Sẵn Có</span>
+            <span class="section-count">PRESETS</span>
+          </div>
+          <div id="presetCarousel" class="preset-carousel">
+            <!-- Render động từ studio.js -->
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TAB 2: AI STYLIST GỢI Ý THEO THỜI TIẾT & SỰ KIỆN
+         ================================================================= -->
+    <section id="recommenderTab" class="tab-pane">
+      <div class="recommender-layout">
+        <!-- Form Nhu Cầu Người Dùng -->
+        <div class="recom-form-card">
+          <div class="panel-section-title">
+            <span>Xác Định Nhu Cầu Cá Nhân</span>
+            <span>AI STYLIST</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+            Hãy cho biết sự kiện bạn sắp tham gia và điều kiện thời tiết, Stylist sẽ đề xuất set Việt Phục Remix hài hòa màu sắc và văn hóa nhất.
+          </p>
+
+          <div class="form-group-item">
+            <label for="recomEvent">1. Bạn Mặc Đi Sự Kiện Gì?</label>
+            <select id="recomEvent" class="form-select-styled">
+              <option value="ky_yeu">🎓 Chụp Ảnh Kỷ Yếu Tốt Nghiệp</option>
+              <option value="prom">✨ Dạ Hội Prom / Khiêu Vũ Cung Đình</option>
+              <option value="streetwear">🛹 Dạo Phố Cuối Tuần / Đi Cafe Cùng Bạn Bè</option>
+              <option value="tet">🧧 Du Xuân Chúc Tết & Thăm Gia Đình</option>
+              <option value="le_chua">🪷 Đi Chùa Cầu An Đầu Năm</option>
+              <option value="festival">🚩 Festival Diễu Hành Việt Phục Quốc Tế</option>
+            </select>
+          </div>
+
+          <div class="form-group-item">
+            <label for="recomWeather">2. Thời Tiết Hôm Đó Thế Nào?</label>
+            <select id="recomWeather" class="form-select-styled">
+              <option value="mild">🍃 Mùa Thu Se Dịu (22 - 26°C)</option>
+              <option value="hot">☀️ Nắng Nóng Mùa Hè (32 - 36°C - Cần Vải Mát)</option>
+              <option value="cold">❄️ Mùa Đông Miền Bắc (14 - 18°C - Cần Giữ Ấm)</option>
+              <option value="rain">🌧️ Mưa Phùn Rả Rích (Cần Gọn Gàng)</option>
+            </select>
+          </div>
+
+          <div class="form-group-item">
+            <label for="recomGender">3. Vóc Dáng & Giới Tính</label>
+            <select id="recomGender" class="form-select-styled">
+              <option value="female">Nữ sinh thanh lịch</option>
+              <option value="male">Nam sinh năng động</option>
+              <option value="unisex">Unisex / Phi giới tính phóng khoáng</option>
+            </select>
+          </div>
+
+          <div class="form-group-item">
+            <label for="recomVibe">4. Phong Cách Cá Nhân Mong Muốn</label>
+            <select id="recomVibe" class="form-select-styled">
+              <option value="streetwear">Streetwear Bụi Bặm, Hack Dáng</option>
+              <option value="y2k">Y2K Folk Rực Rỡ Sắc Màu</option>
+              <option value="minimalist">Minimalist Tối Giản Kiểu Đông Dương</option>
+              <option value="haute_couture">Sang Trọng Haute Couture Dạ Hội</option>
+            </select>
+          </div>
+
+          <button id="btnGenerateRecommendation" class="btn-primary-glow" style="width: 100%; justify-content: center; margin-top: 10px;">
+            AI Stylist Phối Đồ Thông Minh 1-Click ✨
+          </button>
+        </div>
+
+        <!-- Kết Quả Gợi Ý Độc Bản -->
+        <div id="recomResultContainer">
+          <div class="recom-card">
+            <div class="recom-badge">SẴN SÀNG</div>
+            <h3>Nhấn nút "AI Stylist Phối Đồ Thông Minh"</h3>
+            <p style="color:var(--text-muted); font-size:14px;">
+              Hệ thống sẽ tính toán sự tương hợp giữa kiểu áo, chất liệu vải phù hợp thời tiết và bảng màu Ngũ Hành tương sinh để tạo cho bạn bộ trang phục hoàn mỹ nhất.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TAB 3: SO SÁNH PHƯƠNG ÁN PHỐI (SIDE-BY-SIDE COMPARE)
+         ================================================================= -->
+    <section id="compareTab" class="tab-pane">
+      <div class="compare-container">
+        <div class="compare-top-bar">
+          <div>
+            <h3 style="font-family:'Outfit', sans-serif; font-size:18px; color:#ffffff;">So Sánh Trực Quan Hai Phong Cách</h3>
+            <p style="font-size:12px; color:var(--text-muted);">Đặt cạnh nhau giữa phong cách Truyền thống nguyên bản và phong cách Gen Z Remix để đánh giá mức độ phù hợp.</p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button id="btnLoadStudioToA" class="btn-secondary-glass small">Nạp Look Đang Phối ➔ A</button>
+            <button id="btnLoadStudioToB" class="btn-secondary-glass small">Nạp Look Đang Phối ➔ B</button>
+          </div>
+        </div>
+
+        <!-- 2 Khung Canvas Song Song -->
+        <div class="compare-split-view">
+          <!-- Slot A -->
+          <div class="compare-slot-card">
+            <div class="compare-slot-header">
+              <h3>PHƯƠNG ÁN A</h3>
+              <select id="selectPresetA" class="form-select-styled" style="width:auto; padding:6px 12px; font-size:12px;">
+                <!-- Presets -->
+              </select>
+            </div>
+            <div class="compare-canvas-wrap">
+              <canvas id="compareCanvasA" width="600" height="850"></canvas>
+            </div>
+          </div>
+
+          <!-- Slot B -->
+          <div class="compare-slot-card">
+            <div class="compare-slot-header">
+              <h3>PHƯƠNG ÁN B</h3>
+              <select id="selectPresetB" class="form-select-styled" style="width:auto; padding:6px 12px; font-size:12px;">
+                <!-- Presets -->
+              </select>
+            </div>
+            <div class="compare-canvas-wrap">
+              <canvas id="compareCanvasB" width="600" height="850"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng Đánh Giá Chi Tiết -->
+        <div id="comparisonTableContainer">
+          <!-- Render động từ comparison.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TAB 4: LOOKBOOK GALLERY & BỘ SƯU TẬP
+         ================================================================= -->
+    <section id="lookbookTab" class="tab-pane">
+      <div class="lookbook-toolbar">
+        <div>
+          <h2 style="font-family:'Outfit', sans-serif; font-size:24px; color:#ffffff;">Thư Viện Lookbook Việt Phục Remix</h2>
+          <p style="font-size:13px; color:var(--text-muted);">Nơi lưu giữ những sáng tạo thời trang của cộng đồng Gen Z. Bạn có thể thử lại, chia sẻ hoặc xuất poster thời trang HD.</p>
+        </div>
+        <button onclick="window.switchTab('studioTab')" class="btn-primary-glow small">
+          Tạo Look Mới Tại Xưởng 🎨
+        </button>
+      </div>
+
+      <div id="lookbookGrid" class="lookbook-grid">
+        <!-- Render động từ lookbook.js -->
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TAB 5: BÁCH KHOA VIỆT PHỤC & MINI QUIZ
+         ================================================================= -->
+    <section id="wikiTab" class="tab-pane">
+      <div class="wiki-container">
+        <!-- Danh mục tra cứu -->
+        <div class="wiki-content">
+          <div class="wiki-search-box">
+            <input type="text" id="wikiSearchInput" class="search-input-styled" placeholder="🔍 Tìm hiểu về Áo Ngũ Thân, Tứ Thân, Nhật Bình, Áo Dài...">
+          </div>
+          <div id="wikiGarmentList" class="wiki-garment-grid">
+            <!-- Render động từ wiki.js -->
+          </div>
+
+          <!-- Chuyên Mục Giải Mã Hiểu Lầm Văn Hóa (Cultural Mythbusters) -->
+          <div style="margin-top: 36px;">
+            <div class="panel-section-title">
+              <span>💡 Giải Mã Hiểu Lầm Văn Hóa Thường Gặp (Cultural Mythbusters)</span>
+              <span class="section-count">KIẾN THỨC CHUẨN</span>
+            </div>
+            <div id="mythbustersContainer">
+              <!-- Render động từ wiki.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini Quiz Gen Z Sứ Giả Văn Hóa -->
+        <div class="wiki-sidebar">
+          <div class="quiz-widget-card">
+            <div class="quiz-widget-header">
+              <span style="font-size:24px;">👑</span>
+              <h3>Thử Thách: Gen Z Sứ Giả Văn Hóa</h3>
+            </div>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">
+              Kiểm tra nhanh mức độ am hiểu về cúc cài, vạt áo và ý nghĩa văn hóa để nhận huy hiệu danh dự!
+            </p>
+
+            <div id="quizBox">
+              <!-- Render động từ wiki.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       JAVASCRIPT MODULES
+       =================================================================== -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/mannequin.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/recommender.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/lookbook.js"></script>
+  <script src="js/wiki.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
