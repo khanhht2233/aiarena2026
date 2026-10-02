@@ -142,6 +142,81 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("CulturalWiki initialization error:", err);
   }
 
+  // ===================================================================
+  // ĐIỀU KHIỂN GÓC NHÌN CAMERA 3D & ZOOM CANVAS
+  // ===================================================================
+  const btnViewFull = document.getElementById("btnViewFull");
+  const btnViewClose = document.getElementById("btnViewClose");
+  const btnViewAngle = document.getElementById("btnViewAngle");
+  const btnViewBack = document.getElementById("btnViewBack");
+  const btnAutoRotate = document.getElementById("btnAutoRotate");
+  const btnResetRot = document.getElementById("btnResetRot");
+  const viewModeBtns = [btnViewFull, btnViewClose, btnViewAngle, btnViewBack].filter(Boolean);
+
+  function setActiveViewBtn(activeBtn) {
+    viewModeBtns.forEach(btn => btn.classList.remove("active"));
+    if (activeBtn) activeBtn.classList.add("active");
+  }
+
+  if (btnViewFull && mannequin) {
+    btnViewFull.addEventListener("click", () => {
+      mannequin.setViewMode("full");
+      setActiveViewBtn(btnViewFull);
+      if (btnAutoRotate) btnAutoRotate.classList.remove("active");
+      if (window.soundEngine) window.soundEngine.playClick();
+      window.showToast("Góc nhìn: Toàn bộ outfit từ đầu đến chân", "info");
+    });
+  }
+
+  if (btnViewClose && mannequin) {
+    btnViewClose.addEventListener("click", () => {
+      mannequin.setViewMode("close");
+      setActiveViewBtn(btnViewClose);
+      if (btnAutoRotate) btnAutoRotate.classList.remove("active");
+      if (window.soundEngine) window.soundEngine.playClick();
+      window.showToast("Góc nhìn: Cận cảnh chi tiết áo & cúc ngũ thường", "info");
+    });
+  }
+
+  if (btnViewAngle && mannequin) {
+    btnViewAngle.addEventListener("click", () => {
+      mannequin.setViewMode("angle");
+      setActiveViewBtn(btnViewAngle);
+      if (btnAutoRotate) btnAutoRotate.classList.remove("active");
+      if (window.soundEngine) window.soundEngine.playClick();
+      window.showToast("Góc nhìn: Góc nghiêng 3/4 Runway 3D", "info");
+    });
+  }
+
+  if (btnViewBack && mannequin) {
+    btnViewBack.addEventListener("click", () => {
+      mannequin.setViewMode("back");
+      setActiveViewBtn(btnViewBack);
+      if (btnAutoRotate) btnAutoRotate.classList.remove("active");
+      if (window.soundEngine) window.soundEngine.playClick();
+      window.showToast("Góc nhìn: Mặt sau lưng áo & tà áo buông rủ", "info");
+    });
+  }
+
+  if (btnAutoRotate && mannequin) {
+    btnAutoRotate.addEventListener("click", () => {
+      const isRotating = mannequin.toggleAutoRotate();
+      btnAutoRotate.classList.toggle("active", isRotating);
+      if (window.soundEngine) window.soundEngine.playClick();
+      window.showToast(isRotating ? "Bắt đầu tự động xoay 360° Runway" : "Dừng xoay 360°", "info");
+    });
+  }
+
+  if (btnResetRot && mannequin) {
+    btnResetRot.addEventListener("click", () => {
+      mannequin.resetRotation();
+      setActiveViewBtn(btnViewFull);
+      if (btnAutoRotate) btnAutoRotate.classList.remove("active");
+      if (window.soundEngine) window.soundEngine.playClick();
+      window.showToast("Đã đặt lại góc nhìn ban đầu", "info");
+    });
+  }
+
   // Điều khiển Zoom Canvas
   const btnZoomIn = document.getElementById("btnZoomIn");
   const btnZoomOut = document.getElementById("btnZoomOut");
@@ -149,22 +224,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnZoomIn && mannequin) {
     btnZoomIn.addEventListener("click", () => {
-      mannequin.zoomLevel = Math.min(1.4, mannequin.zoomLevel + 0.1);
-      if (studioManager) studioManager.updateStudio();
+      mannequin.targetZoomLevel = Math.min(1.5, mannequin.zoomLevel + 0.12);
+      if (window.soundEngine) window.soundEngine.playClick();
     });
   }
   if (btnZoomOut && mannequin) {
     btnZoomOut.addEventListener("click", () => {
-      mannequin.zoomLevel = Math.max(0.7, mannequin.zoomLevel - 0.1);
-      if (studioManager) studioManager.updateStudio();
+      mannequin.targetZoomLevel = Math.max(0.65, mannequin.zoomLevel - 0.12);
+      if (window.soundEngine) window.soundEngine.playClick();
     });
   }
   if (btnResetZoom && mannequin) {
     btnResetZoom.addEventListener("click", () => {
-      mannequin.zoomLevel = 1.0;
-      if (studioManager) studioManager.updateStudio();
+      mannequin.setViewMode("full");
+      setActiveViewBtn(btnViewFull);
+      if (window.soundEngine) window.soundEngine.playClick();
     });
   }
 
-  console.log("🚀 Việt Phục Remix Web App is fully interactive!");
+  console.log("🚀 Việt Phục Remix Web App is fully interactive with 3D Mannequin Engine!");
 });

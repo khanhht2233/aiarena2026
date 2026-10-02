@@ -21,7 +21,14 @@
       <div class="brand-container" onclick="window.switchTab('studioTab')">
         <div class="brand-logo-mark">🪷</div>
         <div class="brand-text">
-          <h1>VIỆT PHỤC REMIX <span class="brand-badge">GEN Z</span></h1>
+          <div class="brand-title-wrap">
+            <h1>VIỆT PHỤC REMIX</h1>
+            <div class="genz-pill-badge" title="Phiên bản thời trang đương đại Gen Z">
+              <span class="genz-pill-dot">✦</span>
+              <span class="genz-pill-text">GEN Z</span>
+              <span class="genz-pill-sub">EDITION</span>
+            </div>
+          </div>
           <p>Tôn Vinh Di Sản · Sáng Tạo Đương Đại</p>
         </div>
       </div>
@@ -31,7 +38,7 @@
           <span>🎨</span> Xưởng Phối Đồ
         </button>
         <button class="nav-tab-btn" data-tab="recommenderTab" id="tabBtnRecommender">
-          <span>🤖</span> AI Stylist Gợi Ý
+          <span>✦</span> Stylist Tư Vấn
         </button>
         <button class="nav-tab-btn" data-tab="compareTab" id="tabBtnCompare">
           <span>⚖️</span> So Sánh Outfit
@@ -102,7 +109,7 @@
             <div id="genderSelectorRow" class="gender-selector-row">
               <button class="gender-btn active" data-gender="female">👩 Nữ Sinh Thanh Lịch</button>
               <button class="gender-btn" data-gender="male">👨 Nam Sinh Nho Nhã</button>
-              <button class="gender-btn" data-gender="unisex">⚡ Unisex Phóng Khoáng</button>
+              <button class="gender-btn" data-gender="unisex">✦ Unisex Phóng Khoáng</button>
             </div>
           </div>
 
@@ -237,16 +244,43 @@
           </div>
         </aside>
 
-        <!-- CỘT GIỮA: MOCKUP MANNEQUIN CANVAS TRỰC QUAN -->
+        <!-- CỘT GIỮA: MOCKUP MANNEQUIN CANVAS 3D TRỰC QUAN -->
         <main class="studio-canvas-container">
+          <!-- Thanh điều hướng góc nhìn Camera 3D -->
+          <div class="canvas-3d-toolbar" role="group" aria-label="Góc nhìn người mẫu 3D">
+            <div class="view-angles-group">
+              <button id="btnViewFull" class="view-mode-btn active" title="Góc nhìn toàn bộ outfit từ đầu đến chân">
+                <span class="btn-icon">🧍</span> Toàn Bộ Outfit
+              </button>
+              <button id="btnViewClose" class="view-mode-btn" title="Cận cảnh chi tiết áo, cổ và cúc cài">
+                <span class="btn-icon">👔</span> Cận Cảnh Áo
+              </button>
+              <button id="btnViewAngle" class="view-mode-btn" title="Góc nghiêng 3/4 3D phong cách Runway">
+                <span class="btn-icon">📐</span> Góc Nghiêng 3/4
+              </button>
+              <button id="btnViewBack" class="view-mode-btn" title="Xem mặt sau lưng áo và tà sau">
+                <span class="btn-icon">🔄</span> Mặt Sau
+              </button>
+            </div>
+            <button id="btnAutoRotate" class="view-mode-btn btn-orbit" title="Bật/Tắt tự động xoay 360°">
+              <span class="btn-icon">💫</span> Xoay 360°
+            </button>
+          </div>
+
           <div class="canvas-frame">
             <canvas id="mannequinCanvas" width="600" height="850"></canvas>
+
+            <!-- 3D Indicator Badge -->
+            <div class="canvas-3d-badge">
+              <span class="pulse-dot"></span> 3D Interactive · Kéo chuột để xoay 360°
+            </div>
 
             <!-- Floating Controls -->
             <div class="canvas-floating-controls">
               <button id="btnZoomIn" class="canvas-ctrl-btn" title="Phóng to">+</button>
               <button id="btnResetZoom" class="canvas-ctrl-btn" title="Kích thước chuẩn">1:1</button>
               <button id="btnZoomOut" class="canvas-ctrl-btn" title="Thu nhỏ">-</button>
+              <button id="btnResetRot" class="canvas-ctrl-btn" title="Đặt lại góc xoay">↺</button>
             </div>
           </div>
 
@@ -373,7 +407,7 @@
     </section>
 
     <!-- =================================================================
-         TAB 2: AI STYLIST GỢI Ý THEO THỜI TIẾT & SỰ KIỆN
+         TAB 2: STYLIST GỢI Ý THEO DỊP & PHONG CÁCH
          ================================================================= -->
     <section id="recommenderTab" class="tab-pane">
       <div class="recommender-layout">
@@ -381,7 +415,7 @@
         <div class="recom-form-card">
           <div class="panel-section-title">
             <span>Xác Định Nhu Cầu Cá Nhân</span>
-            <span>AI STYLIST</span>
+            <span>STYLE CURATOR</span>
           </div>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
             Hãy cho biết sự kiện bạn sắp tham gia và điều kiện thời tiết, Stylist sẽ đề xuất set Việt Phục Remix hài hòa màu sắc và văn hóa nhất.
@@ -429,7 +463,7 @@
           </div>
 
           <button id="btnGenerateRecommendation" class="btn-primary-glow" style="width: 100%; justify-content: center; margin-top: 10px;">
-            AI Stylist Phối Đồ Thông Minh 1-Click ✨
+            ✦ Gợi Ý Phối Đồ Chuẩn Gu 1-Click
           </button>
         </div>
 
@@ -437,7 +471,7 @@
         <div id="recomResultContainer">
           <div class="recom-card">
             <div class="recom-badge">SẴN SÀNG</div>
-            <h3>Nhấn nút "AI Stylist Phối Đồ Thông Minh"</h3>
+            <h3>Nhấn nút "Gợi Ý Phối Đồ Chuẩn Gu 1-Click"</h3>
             <p style="color:var(--text-muted); font-size:14px;">
               Hệ thống sẽ tính toán sự tương hợp giữa kiểu áo, chất liệu vải phù hợp thời tiết và bảng màu Ngũ Hành tương sinh để tạo cho bạn bộ trang phục hoàn mỹ nhất.
             </p>
